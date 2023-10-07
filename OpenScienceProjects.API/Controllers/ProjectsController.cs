@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OpenScienceProjects.API.Controllers.Models;
-using OpenScienceProjects.API.Controllers.Reponses;
+using OpenScienceProjects.API.Services.Projects.List;
+using OpenScienceProjects.API.ViewModels;
 
 namespace OpenScienceProjects.API.Controllers;
 
@@ -8,13 +8,16 @@ namespace OpenScienceProjects.API.Controllers;
 [Route("api/[controller]")]
 public class ProjectsController : ControllerBase
 {
-    public ProjectsController()
+    private readonly IProjectListService _projectListService;
+
+    public ProjectsController(IProjectListService projectListService)
     {
+        _projectListService = projectListService;
     }
 
-    [HttpPost]
-    public async Task<CreateProjectResponse> CreateProject(CreateProjectModel model)
+    [HttpGet]
+    public async Task<ProjectListViewModel> GetProjectList()
     {
-        return null;
+        return await _projectListService.GetProjectList();
     }
 }
