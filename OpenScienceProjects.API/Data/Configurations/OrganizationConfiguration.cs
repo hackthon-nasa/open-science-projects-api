@@ -17,5 +17,11 @@ public class OrganizationConfiguration : IEntityTypeConfiguration<Organization>
         builder.Property(x => x.Description).HasColumnName("description").IsRequired();
         builder.Property(x => x.Email).HasColumnName("email").IsRequired();
         builder.Property(x => x.Phone).HasColumnName("phone").IsRequired();
+
+        builder
+            .HasMany(x => x.Projects)
+            .WithOne(x => x.Organization)
+            .HasForeignKey(x => x.OrganizationId)
+            .HasPrincipalKey(x => x.Id);
     }
 }

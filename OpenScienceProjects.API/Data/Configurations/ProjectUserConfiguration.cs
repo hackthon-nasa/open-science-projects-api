@@ -14,5 +14,17 @@ public class ProjectUserConfiguration : IEntityTypeConfiguration<ProjectUser>
 
         builder.Property(x => x.ProjectId).HasColumnName("project_id").IsRequired();
         builder.Property(x => x.UserId).HasColumnName("user_id").IsRequired();
+
+        builder
+            .HasOne(x => x.Project)
+            .WithMany(x => x.ProjectUsers)
+            .HasForeignKey(x => x.ProjectId)
+            .HasPrincipalKey(x => x.Id);
+
+        builder
+            .HasOne(x => x.User)
+            .WithMany()
+            .HasForeignKey(x => x.UserId)
+            .HasPrincipalKey(x => x.Id);
     }
 }

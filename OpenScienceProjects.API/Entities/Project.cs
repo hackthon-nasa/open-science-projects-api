@@ -7,4 +7,5 @@ public class Project
     public int OrganizationId { get; set; }
     public virtual Organization Organization { get; set; }
     public virtual IList<ProjectTag> ProjectTags { get; set; }
+    public virtual IList<ProjectUser> ProjectUsers { get; set; }
 }

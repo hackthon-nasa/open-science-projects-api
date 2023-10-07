@@ -14,5 +14,17 @@ public class UserInterestConfiguration : IEntityTypeConfiguration<UserInterest>
 
         builder.Property(x => x.UserId).HasColumnName("user_id").IsRequired();
         builder.Property(x => x.InterestId).HasColumnName("interest_id").IsRequired();
+
+        builder
+            .HasOne(x => x.User)
+            .WithMany(x => x.UserInterests)
+            .HasForeignKey(x => x.UserId)
+            .HasPrincipalKey(x => x.Id);
+
+        builder
+            .HasOne(x => x.Interest)
+            .WithMany()
+            .HasForeignKey(x => x.InterestId)
+            .HasPrincipalKey(x => x.Id);
     }
 }
