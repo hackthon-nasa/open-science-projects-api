@@ -31,7 +31,7 @@ namespace OpenScienceProjects.API.Migrations
                     name = table.Column<string>(type: "varchar(250)", nullable: false),
                     description = table.Column<string>(type: "varchar(250)", nullable: false),
                     email = table.Column<string>(type: "varchar(100)", nullable: false),
-                    phone = table.Column<int>(type: "int(20)", nullable: false)
+                    phone = table.Column<int>(type: "int", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {

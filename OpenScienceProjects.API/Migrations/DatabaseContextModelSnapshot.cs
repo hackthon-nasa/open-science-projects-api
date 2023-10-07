@@ -66,7 +66,8 @@ namespace OpenScienceProjects.API.Migrations
                         .HasColumnName("name");
 
                     b.Property<int>("Phone")
-                        .HasColumnType("int(20)")
+                        .HasMaxLength(20)
+                        .HasColumnType("int")
                         .HasColumnName("phone");
 
                     b.HasKey("Id");

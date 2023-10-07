@@ -12,7 +12,7 @@ using OpenScienceProjects.API.Data;
 namespace OpenScienceProjects.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20231007174531_AddedTables")]
+    [Migration("20231007174836_AddedTables")]
     partial class AddedTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,7 +68,8 @@ namespace OpenScienceProjects.API.Migrations
                         .HasColumnName("name");
 
                     b.Property<int>("Phone")
-                        .HasColumnType("int(20)")
+                        .HasMaxLength(20)
+                        .HasColumnType("int")
                         .HasColumnName("phone");
 
                     b.HasKey("Id");
