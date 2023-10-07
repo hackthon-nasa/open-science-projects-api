@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OpenScienceProjects.API.Controllers.Models;
 using OpenScienceProjects.API.Controllers.Reponses;
+using OpenScienceProjects.API.Services.Projects.AddUser;
 using OpenScienceProjects.API.Services.Projects.Create;
 using OpenScienceProjects.API.Services.Projects.List;
 
@@ -12,13 +13,16 @@ public class ProjectsController : ControllerBase
 {
     private readonly IProjectListService _projectListService;
     private readonly IProjectCreateService _projectCreateService;
+    private readonly IProjectAddUserService _projectAddUserService;
 
     public ProjectsController(
         IProjectListService projectListService,
-        IProjectCreateService projectCreateService)
+        IProjectCreateService projectCreateService,
+        IProjectAddUserService projectAddUserService)
     {
         _projectListService = projectListService;
         _projectCreateService = projectCreateService;
+        _projectAddUserService = projectAddUserService;
     }
 
     [HttpGet]
@@ -31,5 +35,11 @@ public class ProjectsController : ControllerBase
     public Task CreateProject(ProjectCreateModel projectCreateModel)
     {
         return _projectCreateService.CreateProject(projectCreateModel);
+    }
+
+    [HttpPost("users")]
+    public Task AddUserToProject(ProjectAddUserModel projectAddUserModel)
+    {
+        return _projectAddUserService.AddUserToProject(projectAddUserModel);
     }
 }
