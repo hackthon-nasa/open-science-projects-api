@@ -30,9 +30,9 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpGet]
-    public Task<ProjectListResponse> GetProjectList()
+    public Task<ProjectListResponse> GetProjectList([FromQuery] UserTagsListModel userTagsListModel)
     {
-        return _projectListService.GetProjectList();
+        return _projectListService.GetProjectList(userTagsListModel.TagIds);
     }
 
     [HttpGet("{id}")]
