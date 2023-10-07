@@ -15,23 +15,17 @@ public class ProjectRepository : IProjectRepository
         _entity = _context.Set<Project>();
     }
 
-    public async Task<ProjectListResponse> GetProjectList()
+    public Task<List<Project>> GetProjectList()
     {
-        return await _entity
-            .Select(x => new ProjectListResponse
+        return _entity
+            .Select(x => new Project
             {
-                Projects = new List<Project>
-                {
-                    new ()
-                    {
-                        Id = x .Id,
-                        Description = x.Description,
-                        OrganizationId = x.OrganizationId,
-                        Organization = x.Organization,
-                        ProjectTags = x.ProjectTags
-                    }
-                }
-            }).FirstOrDefaultAsync();
+                Id = x .Id,
+                Description = x.Description,
+                OrganizationId = x.OrganizationId,
+                Organization = x.Organization,
+                ProjectTags = x.ProjectTags
+            }).ToListAsync();
     }
 
     public async Task InsertOne(Project project)

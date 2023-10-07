@@ -5,6 +5,6 @@ namespace OpenScienceProjects.API.Data.Repositories.Projects;
 
 public interface IProjectRepository
 {
-    Task<ProjectListResponse> GetProjectList();
+    Task<List<Project>> GetProjectList();
     Task InsertOne(Project project);
 }

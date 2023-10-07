@@ -14,6 +14,11 @@ public class ProjectListService : IProjectListService
     
     public async Task<ProjectListResponse> GetProjectList()
     {
-        return await _projectRepository.GetProjectList();
+        var projects  = await _projectRepository.GetProjectList();
+
+        return new ProjectListResponse
+        {
+            Projects = projects
+        };
     }
 }
