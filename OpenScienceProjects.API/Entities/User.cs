@@ -8,6 +8,5 @@ public class User
     public string Password { get; set; }
     public DateTime BirthDate { get; set; }
     public string Description { get; set; }
-    public virtual IList<UserSkill> UserSkills { get; set; }
-    public virtual IList<UserInterest> UserInterests { get; set; }
+    public virtual IList<UserTag> UserTags { get; set; }
 }

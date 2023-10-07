@@ -4,27 +4,27 @@ using OpenScienceProjects.API.Entities;
 
 namespace OpenScienceProjects.API.Data.Configurations;
 
-public class UserInterestConfiguration : IEntityTypeConfiguration<UserInterest>
+public class UserTagConfiguration : IEntityTypeConfiguration<UserTag>
 {
-    public void Configure(EntityTypeBuilder<UserInterest> builder)
+    public void Configure(EntityTypeBuilder<UserTag> builder)
     {
-        builder.ToTable("user_interest");
+        builder.ToTable("user_tag");
 
-        builder.HasKey(x => new { x.UserId, x.InterestId });
+        builder.HasKey(x => new { x.UserId, x.TagId });
 
         builder.Property(x => x.UserId).HasColumnName("user_id").IsRequired();
-        builder.Property(x => x.InterestId).HasColumnName("interest_id").IsRequired();
+        builder.Property(x => x.TagId).HasColumnName("tag_id").IsRequired();
 
         builder
             .HasOne(x => x.User)
-            .WithMany(x => x.UserInterests)
+            .WithMany(x => x.UserTags)
             .HasForeignKey(x => x.UserId)
             .HasPrincipalKey(x => x.Id);
 
         builder
-            .HasOne(x => x.Interest)
+            .HasOne(x => x.Tag)
             .WithMany()
-            .HasForeignKey(x => x.InterestId)
+            .HasForeignKey(x => x.UserId)
             .HasPrincipalKey(x => x.Id);
     }
 }

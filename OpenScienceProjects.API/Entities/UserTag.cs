@@ -1,9 +1,9 @@
 ﻿namespace OpenScienceProjects.API.Entities;
 
-public class UserInterest
+public class UserTag
 {
     public int UserId { get; set; }
     public User User { get; set; }
-    public int InterestId { get; set; }
-    public Interest Interest { get; set; }
+    public int TagId { get; set; }
+    public Tag Tag { get; set; }
 }
