@@ -8,10 +8,11 @@ public class SkillConfiguration : IEntityTypeConfiguration<Skill>
 {
     public void Configure(EntityTypeBuilder<Skill> builder)
     {
-        builder.ToTable("");
+        builder.ToTable("skill");
 
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
+        builder.Property(x => x.Description).HasColumnName("description").IsRequired();
     }
 }

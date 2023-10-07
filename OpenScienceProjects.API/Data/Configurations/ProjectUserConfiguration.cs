@@ -8,10 +8,11 @@ public class ProjectUserConfiguration : IEntityTypeConfiguration<ProjectUser>
 {
     public void Configure(EntityTypeBuilder<ProjectUser> builder)
     {
-        builder.ToTable("");
+        builder.ToTable("project_user");
 
-        builder.HasKey(x => x.Id);
+        builder.HasKey(x => new { x.ProjectId, x.UserId });
 
-        builder.Property(x => x.Id).HasColumnName("id").IsRequired();
+        builder.Property(x => x.ProjectId).HasColumnName("project_id").IsRequired();
+        builder.Property(x => x.UserId).HasColumnName("user_id").IsRequired();
     }
 }

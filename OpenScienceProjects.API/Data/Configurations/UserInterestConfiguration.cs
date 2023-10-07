@@ -8,10 +8,11 @@ public class UserInterestConfiguration : IEntityTypeConfiguration<UserInterest>
 {
     public void Configure(EntityTypeBuilder<UserInterest> builder)
     {
-        builder.ToTable("");
+        builder.ToTable("user_interest");
 
-        builder.HasKey(x => x.Id);
+        builder.HasKey(x => new { x.UserId, x.InterestId });
 
-        builder.Property(x => x.Id).HasColumnName("id").IsRequired();
+        builder.Property(x => x.UserId).HasColumnName("user_id").IsRequired();
+        builder.Property(x => x.InterestId).HasColumnName("interest_id").IsRequired();
     }
 }

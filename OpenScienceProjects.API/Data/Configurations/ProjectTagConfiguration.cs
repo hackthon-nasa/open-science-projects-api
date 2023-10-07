@@ -8,10 +8,11 @@ public class ProjectTagConfiguration : IEntityTypeConfiguration<ProjectTag>
 {
     public void Configure(EntityTypeBuilder<ProjectTag> builder)
     {
-        builder.ToTable("");
+        builder.ToTable("project_tag");
 
-        builder.HasKey(x => x.Id);
+        builder.HasKey(x => new { x.ProjectId, x.TagId });
 
-        builder.Property(x => x.Id).HasColumnName("id").IsRequired();
+        builder.Property(x => x.ProjectId).HasColumnName("project_id").IsRequired();
+        builder.Property(x => x.TagId).HasColumnName("tag_id").IsRequired();
     }
 }
