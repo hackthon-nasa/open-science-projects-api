@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OpenScienceProjects.API.Controllers.Reponses;
 using OpenScienceProjects.API.Services.Projects.List;
-using OpenScienceProjects.API.ViewModels;
 
 namespace OpenScienceProjects.API.Controllers;
 
@@ -16,7 +16,7 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ProjectListViewModel> GetProjectList()
+    public async Task<ProjectListResponse> GetProjectList()
     {
         return await _projectListService.GetProjectList();
     }

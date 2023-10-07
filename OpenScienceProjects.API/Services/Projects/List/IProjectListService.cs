@@ -1,8 +1,8 @@
-﻿using OpenScienceProjects.API.ViewModels;
+﻿using OpenScienceProjects.API.Controllers.Reponses;
 
 namespace OpenScienceProjects.API.Services.Projects.List;
 
 public interface IProjectListService
 {
-    Task<ProjectListViewModel> GetProjectList();
+    Task<ProjectListResponse> GetProjectList();
 }

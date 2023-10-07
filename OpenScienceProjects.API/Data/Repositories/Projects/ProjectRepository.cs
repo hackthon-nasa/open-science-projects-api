@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OpenScienceProjects.API.Controllers.Reponses;
 using OpenScienceProjects.API.Entities;
-using OpenScienceProjects.API.ViewModels;
 
 namespace OpenScienceProjects.API.Data.Repositories.Projects;
 
@@ -15,10 +15,10 @@ public class ProjectRepository : IProjectRepository
         _entity = _context.Set<Project>();
     }
 
-    public async Task<ProjectListViewModel> GetProjectList()
+    public async Task<ProjectListResponse> GetProjectList()
     {
         return await _entity
-            .Select(x => new ProjectListViewModel
+            .Select(x => new ProjectListResponse
             {
                 Projects = new List<Project>
                 {
