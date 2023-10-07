@@ -22,7 +22,7 @@ public static class DependencyInjection
     {
         services.AddDbContext<DatabaseContext>(options =>
         {
-            var connectionString = Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING");
+            var connectionString = "Server=open-science-projects.database.windows.net;Database=open-science-projects;User Id=open-science-projects;Password=eB-Xi1&wkl/538g~6zZ>;";
             options.UseSqlServer(connectionString!);
         });
     }

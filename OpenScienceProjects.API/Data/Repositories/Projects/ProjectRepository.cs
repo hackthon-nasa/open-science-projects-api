@@ -17,7 +17,7 @@ public class ProjectRepository : IProjectRepository
         _entity = _context.Set<Project>();
     }
     
-    public Task<List<Project>> GetProjectList(IList<int> interestsListModel, IList<int> userSkillsListModel, IList<int> userTagsListModel)
+    public Task<List<Project>> GetProjectList(IList<int> userTagsListModel)
     {
         var query = from project in _entity
             join projectTag in _context.ProjectTags.FilterTags(userTagsListModel) on project.Id equals projectTag.ProjectId

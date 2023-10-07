@@ -13,9 +13,9 @@ public class ProjectListService : IProjectListService
         _projectRepository = projectRepository;
     }
     
-    public async Task<ProjectListResponse> GetProjectList(UserInterestListModel interestsListModel, UserSkillsListModel userSkillsListModel, UserTagsListModel userTagsListModel)
+    public async Task<ProjectListResponse> GetProjectList(IList<int> userTagsListModel)
     {
-        var projects  = await _projectRepository.GetProjectList();
+        var projects  = await _projectRepository.GetProjectList(userTagsListModel);
 
         return new ProjectListResponse
         {
