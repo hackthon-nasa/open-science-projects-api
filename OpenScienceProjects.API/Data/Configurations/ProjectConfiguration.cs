@@ -13,7 +13,7 @@ public class ProjectConfiguration : IEntityTypeConfiguration<Project>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
-        builder.Property(x => x.Description).HasColumnName("description").IsRequired();
+        builder.Property(x => x.Description).HasColumnName("description").HasColumnType("varchar(250)").IsRequired();
         builder.Property(x => x.OrganizationId).HasColumnName("organization_id").IsRequired();
     }
 }

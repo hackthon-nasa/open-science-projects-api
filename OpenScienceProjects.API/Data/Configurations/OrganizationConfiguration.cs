@@ -13,10 +13,10 @@ public class OrganizationConfiguration : IEntityTypeConfiguration<Organization>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
-        builder.Property(x => x.Name).HasColumnName("name").IsRequired();
-        builder.Property(x => x.Description).HasColumnName("description").IsRequired();
-        builder.Property(x => x.Email).HasColumnName("email").IsRequired();
-        builder.Property(x => x.Phone).HasColumnName("phone").IsRequired();
+        builder.Property(x => x.Name).HasColumnName("name").HasColumnType("varchar(250)").IsRequired();
+        builder.Property(x => x.Description).HasColumnName("description").HasColumnType("varchar(250)").IsRequired();
+        builder.Property(x => x.Email).HasColumnName("email").HasColumnType("varchar(100)").IsRequired();
+        builder.Property(x => x.Phone).HasColumnName("phone").HasColumnType("int(20)").IsRequired();
 
         builder
             .HasMany(x => x.Projects)
