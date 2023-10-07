@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OpenScienceProjects.API.Controllers.Reponses;
 using OpenScienceProjects.API.Entities;
 
 namespace OpenScienceProjects.API.Data.Repositories.Projects;
@@ -20,12 +19,26 @@ public class ProjectRepository : IProjectRepository
         return _entity
             .Select(x => new Project
             {
-                Id = x .Id,
+                Id = x.Id,
                 Description = x.Description,
                 OrganizationId = x.OrganizationId,
                 Organization = x.Organization,
                 ProjectTags = x.ProjectTags
             }).ToListAsync();
+    }
+
+    public Task<Project> GetProjectListById(int id)
+    {
+        return _entity
+            .Where(x => x.Id == id)
+            .Select(x => new Project
+            {
+                Id = x.Id,
+                Description = x.Description,
+                OrganizationId = x.OrganizationId,
+                Organization = x.Organization,
+                ProjectTags = x.ProjectTags
+            }).FirstOrDefaultAsync();
     }
 
     public async Task InsertOne(Project project)
