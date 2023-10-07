@@ -1,8 +1,8 @@
 ﻿using OpenScienceProjects.API.Entities;
 
-namespace OpenScienceProjects.API.ViewModels;
+namespace OpenScienceProjects.API.Controllers.Reponses;
 
-public class ProjectListViewModel
+public class ProjectListResponse
 {
     public IList<Project> Projects { get; set; }
 }

@@ -1,5 +1,5 @@
-﻿using OpenScienceProjects.API.Data.Repositories.Projects;
-using OpenScienceProjects.API.ViewModels;
+﻿using OpenScienceProjects.API.Controllers.Reponses;
+using OpenScienceProjects.API.Data.Repositories.Projects;
 
 namespace OpenScienceProjects.API.Services.Projects.List;
 
@@ -12,9 +12,8 @@ public class ProjectListService : IProjectListService
         _projectRepository = projectRepository;
     }
     
-    public async Task<ProjectListViewModel> GetProjectList()
+    public async Task<ProjectListResponse> GetProjectList()
     {
         return await _projectRepository.GetProjectList();
     }
-    
 }
