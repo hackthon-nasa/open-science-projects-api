@@ -33,4 +33,10 @@ public class ProjectRepository : IProjectRepository
                 }
             }).FirstOrDefaultAsync();
     }
+
+    public async Task InsertOne(Project project)
+    {
+        await _entity.AddAsync(project);
+        await _context.SaveChangesAsync();
+    }
 }

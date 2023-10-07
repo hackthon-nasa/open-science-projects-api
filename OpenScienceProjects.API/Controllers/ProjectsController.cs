@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OpenScienceProjects.API.Controllers.Models;
 using OpenScienceProjects.API.Controllers.Reponses;
+using OpenScienceProjects.API.Services.Projects.Create;
 using OpenScienceProjects.API.Services.Projects.List;
 
 namespace OpenScienceProjects.API.Controllers;
@@ -9,15 +11,25 @@ namespace OpenScienceProjects.API.Controllers;
 public class ProjectsController : ControllerBase
 {
     private readonly IProjectListService _projectListService;
+    private readonly IProjectCreateService _projectCreateService;
 
-    public ProjectsController(IProjectListService projectListService)
+    public ProjectsController(
+        IProjectListService projectListService,
+        IProjectCreateService projectCreateService)
     {
         _projectListService = projectListService;
+        _projectCreateService = projectCreateService;
     }
 
     [HttpGet]
-    public async Task<ProjectListResponse> GetProjectList()
+    public Task<ProjectListResponse> GetProjectList()
     {
-        return await _projectListService.GetProjectList();
+        return _projectListService.GetProjectList();
+    }
+
+    [HttpPost]
+    public Task CreateProject(ProjectCreateModel projectCreateModel)
+    {
+        return _projectCreateService.CreateProject(projectCreateModel);
     }
 }
