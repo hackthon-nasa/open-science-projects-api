@@ -22,7 +22,7 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpGet]
-    public Task<ProjectListResponse> GetProjectList()
+    public Task<ProjectListResponse> GetProjectList(UserInterestListModel interestsListModel, UserSkillsListModel userSkillsListModel, UserTagsListModel userTagsListModel)
     {
         return _projectListService.GetProjectList();
     }
