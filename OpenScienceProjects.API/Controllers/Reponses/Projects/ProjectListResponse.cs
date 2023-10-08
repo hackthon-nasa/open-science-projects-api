@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using OpenScienceProjects.API.Entities;
 
-namespace OpenScienceProjects.API.Controllers.Reponses;
+namespace OpenScienceProjects.API.Controllers.Reponses.Projects;
 
 public class ProjectListResponse
 {

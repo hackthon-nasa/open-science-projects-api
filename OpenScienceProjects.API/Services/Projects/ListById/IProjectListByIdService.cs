@@ -1,4 +1,4 @@
-﻿using OpenScienceProjects.API.Controllers.Reponses;
+﻿using OpenScienceProjects.API.Controllers.Reponses.Projects;
 
 namespace OpenScienceProjects.API.Services.Projects.ListById;
 

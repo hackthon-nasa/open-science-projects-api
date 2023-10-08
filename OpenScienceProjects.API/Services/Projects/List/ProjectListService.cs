@@ -1,5 +1,5 @@
 ﻿using OpenScienceProjects.API.Controllers.Models;
-using OpenScienceProjects.API.Controllers.Reponses;
+using OpenScienceProjects.API.Controllers.Reponses.Projects;
 using OpenScienceProjects.API.Data.Repositories.Projects;
 
 namespace OpenScienceProjects.API.Services.Projects.List;

@@ -19,4 +19,19 @@ public class UserRepository : IUserRepository
         await _entity.AddAsync(user);
         await _context.SaveChangesAsync();
     }
+
+    public Task<User> GetUserListById(int id)
+    {
+        return _entity
+            .Where(x => x.Id == id)
+            .Select(x => new User
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Email = x.Email,
+                BirthDate = x.BirthDate,
+                Password = x.Password,
+                Description = x.Description,
+            }).FirstOrDefaultAsync();
+    }
 }
