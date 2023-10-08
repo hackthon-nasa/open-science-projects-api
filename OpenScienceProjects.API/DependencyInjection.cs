@@ -6,6 +6,7 @@ using OpenScienceProjects.API.Data.Repositories.ProjectsUsers;
 using OpenScienceProjects.API.Services.Projects.AddUser;
 using OpenScienceProjects.API.Services.Projects.Create;
 using OpenScienceProjects.API.Services.Projects.List;
+using OpenScienceProjects.API.Services.Projects.ListById;
 
 namespace OpenScienceProjects.API;
 
@@ -38,6 +39,7 @@ public static class DependencyInjection
     {
         services.AddTransient<IProjectCreateService, ProjectCreateService>();
         services.AddTransient<IProjectListService, ProjectListService>();
+        services.AddTransient<IProjectListByIdService, ProjectListByIdService>();
         services.AddTransient<IProjectAddUserService, ProjectAddUserService>();
     }
 }
