@@ -71,4 +71,13 @@ public class ProjectRepository : IProjectRepository
         await _entity.AddAsync(project);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<IList<ProjectTag>> GetTagsByOrganizationId(int organizationId)
+    {
+        return await _entity
+            .Include(x => x.ProjectTags)
+            .Where(x => x.OrganizationId == organizationId)
+            .SelectMany(x => x.ProjectTags)
+            .ToListAsync();
+    }
 }

@@ -5,6 +5,7 @@ using OpenScienceProjects.API.Data.Repositories.ProjectsTags;
 using OpenScienceProjects.API.Data.Repositories.ProjectsUsers;
 using OpenScienceProjects.API.Data.Repositories.Users;
 using OpenScienceProjects.API.Data.Repositories.UserTags;
+using OpenScienceProjects.API.Services.Organizations;
 using OpenScienceProjects.API.Services.Projects.AddUser;
 using OpenScienceProjects.API.Services.Projects.Create;
 using OpenScienceProjects.API.Services.Projects.List;
@@ -56,5 +57,7 @@ public static class DependencyInjection
         services.AddTransient<IUserListByIdService, UserListByIdService>();
         services.AddTransient<IUserListByNameService, UserListByNameService>();
         services.AddTransient<IUserListTagsByIdService, UserListTagsByIdService>();
+
+        services.AddTransient<IOrganizationListTagsByIdService, OrganizationListTagsByIdService>();
     }
 }
