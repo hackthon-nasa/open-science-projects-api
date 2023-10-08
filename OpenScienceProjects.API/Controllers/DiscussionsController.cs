@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OpenScienceProjects.API.Services.Discussion;
 using OpenScienceProjects.API.Services.Discussion.List;
 
 namespace OpenScienceProjects.API.Controllers;
@@ -15,7 +14,7 @@ public class DiscussionsController : ControllerBase
         _discussionListByProjectIdService = discussionListByProjectIdService;
     }
 
-    [HttpGet]
+    [HttpGet("{projectId}")]
     public async Task<List<Entities.Discussion>> GetDiscussionByProjectId([FromRoute] int projectId)
     {
         return await _discussionListByProjectIdService.GetDiscussionByProjectId(projectId);
