@@ -1,4 +1,4 @@
-﻿using OpenScienceProjects.API.Controllers.Models;
+﻿using OpenScienceProjects.API.Controllers.Models.Projects;
 
 namespace OpenScienceProjects.API.Services.Projects.AddUser;
 

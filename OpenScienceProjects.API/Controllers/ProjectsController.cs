@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OpenScienceProjects.API.Controllers.Models;
+using OpenScienceProjects.API.Controllers.Models.Projects;
+using OpenScienceProjects.API.Controllers.Models.Users;
 using OpenScienceProjects.API.Controllers.Reponses;
 using OpenScienceProjects.API.Services.Projects.AddUser;
 using OpenScienceProjects.API.Services.Projects.Create;
