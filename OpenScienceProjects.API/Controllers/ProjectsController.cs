@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OpenScienceProjects.API.Controllers.Models;
-using OpenScienceProjects.API.Controllers.Reponses;
+using OpenScienceProjects.API.Controllers.Models.Projects;
+using OpenScienceProjects.API.Controllers.Models.Users;
+using OpenScienceProjects.API.Controllers.Reponses.Projects;
 using OpenScienceProjects.API.Services.Projects.AddUser;
 using OpenScienceProjects.API.Services.Projects.Create;
 using OpenScienceProjects.API.Services.Projects.List;
@@ -48,7 +49,7 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public Task<ProjectListByIdResponse> GetProjectById(int id)
+    public Task<ProjectListByIdResponse> GetProjectListById(int id)
     {
         return _projectListByIdService.GetProjectListById(id);
     }

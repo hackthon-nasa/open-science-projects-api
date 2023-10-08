@@ -1,4 +1,4 @@
-﻿using OpenScienceProjects.API.Controllers.Models;
+﻿using OpenScienceProjects.API.Controllers.Models.Projects;
 using OpenScienceProjects.API.Data.Repositories.ProjectsUsers;
 using OpenScienceProjects.API.Entities;
 

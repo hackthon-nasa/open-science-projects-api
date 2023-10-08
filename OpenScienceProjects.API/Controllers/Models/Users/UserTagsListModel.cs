@@ -1,7 +1,7 @@
 ﻿#nullable enable
 using System.Text.Json.Serialization;
 
-namespace OpenScienceProjects.API.Controllers.Models;
+namespace OpenScienceProjects.API.Controllers.Models.Users;
 
 public class UserTagsListModel
 {
