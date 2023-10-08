@@ -19,7 +19,10 @@ public class ProjectRepository : IProjectRepository
     {
         var query =
             from project in _entity
-            join projectTag in _context.ProjectTags.FilterTags(userTagsListModel) on project.Id equals projectTag.ProjectId
+            join projectTag in _context.ProjectTags.FilterTags(userTagsListModel)
+                on project.Id equals projectTag.ProjectId
+                into projectTagJoined 
+            from projectTag in projectTagJoined.DefaultIfEmpty()
             select project;
 
         return query.ToListAsync();
