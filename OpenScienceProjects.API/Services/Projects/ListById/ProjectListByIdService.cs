@@ -1,6 +1,5 @@
 ﻿using OpenScienceProjects.API.Controllers.Reponses.Projects;
 using OpenScienceProjects.API.Data.Repositories.Projects;
-using OpenScienceProjects.API.Entities;
 
 namespace OpenScienceProjects.API.Services.Projects.ListById;
 
@@ -21,6 +20,7 @@ public class ProjectListByIdService : IProjectListByIdService
         {
             Id = projects.Id,
             Description = projects.Description,
+            Link = projects.Link,
             OrganizationId = projects.OrganizationId,
             TagIds = new List<int>(),
         };
@@ -34,6 +34,7 @@ public class ProjectListByIdService : IProjectListByIdService
         {
             Id = projects.Id,
             Description = projects.Description,
+            Link = projects.Link,
             OrganizationId = projects.OrganizationId,
             TagIds = new List<int>(),
         };
@@ -47,6 +48,7 @@ public class ProjectListByIdService : IProjectListByIdService
         {
             Id = p.Id,
             Description = p.Description,
+            Link = p.Link,
             OrganizationId = p.OrganizationId,
             TagIds = new List<int>(),
         }).ToList();

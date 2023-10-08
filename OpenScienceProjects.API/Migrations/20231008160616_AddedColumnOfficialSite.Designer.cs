@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OpenScienceProjects.API.Data;
 
@@ -11,9 +12,10 @@ using OpenScienceProjects.API.Data;
 namespace OpenScienceProjects.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20231008160616_AddedColumnOfficialSite")]
+    partial class AddedColumnOfficialSite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,11 +76,6 @@ namespace OpenScienceProjects.API.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(250)")
                         .HasColumnName("description");
-
-                    b.Property<string>("Link")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)")
-                        .HasColumnName("link");
 
                     b.Property<int>("OrganizationId")
                         .HasColumnType("int")

@@ -1,7 +1,7 @@
 ﻿using OpenScienceProjects.API.Controllers.Reponses.Organizations;
 using OpenScienceProjects.API.Data.Repositories.Projects;
 
-namespace OpenScienceProjects.API.Services.Organizations;
+namespace OpenScienceProjects.API.Services.Organizations.ListTagsById;
 
 public class OrganizationListTagsByIdService : IOrganizationListTagsByIdService
 {
