@@ -34,4 +34,34 @@ public class UserRepository : IUserRepository
                 Description = x.Description,
             }).FirstOrDefaultAsync();
     }
+
+    public Task<User> GetUserListByName(string name)
+    {
+        return _entity
+            .Where(x => x.Name == name)
+            .Select(x => new User
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Email = x.Email,
+                BirthDate = x.BirthDate,
+                Password = x.Password,
+                Description = x.Description,
+            }).FirstOrDefaultAsync();
+    }
+
+    public Task<User> GetUserListByEmail(string email)
+    {
+        return _entity
+            .Where(x => x.Email == email)
+            .Select(x => new User
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Email = x.Email,
+                BirthDate = x.BirthDate,
+                Password = x.Password,
+                Description = x.Description,
+            }).FirstOrDefaultAsync();
+    }
 }
