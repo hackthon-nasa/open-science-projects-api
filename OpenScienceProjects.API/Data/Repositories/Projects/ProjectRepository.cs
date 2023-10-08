@@ -44,7 +44,7 @@ public class ProjectRepository : IProjectRepository
     public Task<List<Project>> GetProjectListByName(string name)
     {
         return _entity
-            .Where(x => x.Description == name)
+            .Where(x => x.Title == name)
             .Select(x => new Project
             {
                 Id = x.Id,
