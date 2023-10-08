@@ -9,4 +9,5 @@ public class Project
     public virtual Organization Organization { get; set; }
     public virtual IList<ProjectTag> ProjectTags { get; set; }
     public virtual IList<ProjectUser> ProjectUsers { get; set; }
+    public virtual IList<Discussion> ProjectDiscussions { get; set; }
 }
