@@ -4,5 +4,5 @@ namespace OpenScienceProjects.API.Data.Repositories.Discussions;
 
 public interface IDiscussionRepository
 {
-    Task<List<Discussion>> GetDiscutissionListByProjectId(int projectId);
+    Task<List<Discussion>> GetDiscussionListByProjectId(int projectId);
 }

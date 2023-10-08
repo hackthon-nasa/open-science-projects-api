@@ -14,7 +14,7 @@ public class DiscussionRepository : IDiscussionRepository
         _entity = _context.Set<Discussion>();
     }
 
-    public Task<List<Discussion>> GetDiscutissionListByProjectId(int projectId)
+    public Task<List<Discussion>> GetDiscussionListByProjectId(int projectId)
     {
         return _entity
             .Where(x => x.ProjectId == projectId)

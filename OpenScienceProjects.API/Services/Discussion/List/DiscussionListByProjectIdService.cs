@@ -13,6 +13,6 @@ public class DiscussionListByProjectIdService : IDiscussionListByProjectIdServic
 
      public async Task<List<Entities.Discussion>> GetDiscussionByProjectId(int projectId)
      {
-          return await _discussionRepository.GetDiscutissionListByProjectId(projectId);
+          return await _discussionRepository.GetDiscussionListByProjectId(projectId);
      }
 }
