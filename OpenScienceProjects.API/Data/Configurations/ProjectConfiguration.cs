@@ -14,6 +14,7 @@ public class ProjectConfiguration : IEntityTypeConfiguration<Project>
 
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
         builder.Property(x => x.Description).HasColumnName("description").HasColumnType("varchar(250)").IsRequired();
+        builder.Property(x => x.Link).HasColumnName("link").HasColumnType("varchar(250)").IsRequired();
         builder.Property(x => x.OrganizationId).HasColumnName("organization_id").IsRequired();
     }
 }

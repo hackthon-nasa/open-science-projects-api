@@ -17,9 +17,10 @@ public class ProjectRepository : IProjectRepository
 
     public Task<List<Project>> GetProjectList(IList<int> userTagsListModel)
     {
-        var query = from project in _entity
-                    join projectTag in _context.ProjectTags.FilterTags(userTagsListModel) on project.Id equals projectTag.ProjectId
-                    select project;
+        var query =
+            from project in _entity
+            join projectTag in _context.ProjectTags.FilterTags(userTagsListModel) on project.Id equals projectTag.ProjectId
+            select project;
 
         return query.ToListAsync();
     }
@@ -32,6 +33,7 @@ public class ProjectRepository : IProjectRepository
             {
                 Id = x.Id,
                 Description = x.Description,
+                Link = x.Link,
                 OrganizationId = x.OrganizationId,
                 Organization = x.Organization,
                 ProjectTags = x.ProjectTags
@@ -46,6 +48,7 @@ public class ProjectRepository : IProjectRepository
             {
                 Id = x.Id,
                 Description = x.Description,
+                Link = x.Link,
                 OrganizationId = x.OrganizationId,
                 Organization = x.Organization,
                 ProjectTags = x.ProjectTags
@@ -60,6 +63,7 @@ public class ProjectRepository : IProjectRepository
             {
                 Id = x.Id,
                 Description = x.Description,
+                Link = x.Link,
                 OrganizationId = x.OrganizationId,
                 Organization = x.Organization,
                 ProjectTags = x.ProjectTags

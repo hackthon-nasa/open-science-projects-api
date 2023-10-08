@@ -20,6 +20,7 @@ public class ProjectListByIdService : IProjectListByIdService
         {
             Id = projects.Id,
             Description = projects.Description,
+            Link = projects.Link,
             OrganizationId = projects.OrganizationId,
             TagIds = new List<int>(),
         };
@@ -33,6 +34,7 @@ public class ProjectListByIdService : IProjectListByIdService
         {
             Id = projects.Id,
             Description = projects.Description,
+            Link = projects.Link,
             OrganizationId = projects.OrganizationId,
             TagIds = new List<int>(),
         };
@@ -46,6 +48,7 @@ public class ProjectListByIdService : IProjectListByIdService
         {
             Id = p.Id,
             Description = p.Description,
+            Link = p.Link,
             OrganizationId = p.OrganizationId,
             TagIds = new List<int>(),
         }).ToList();
