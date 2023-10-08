@@ -19,10 +19,14 @@ public class UsersController : ControllerBase
 
     public UsersController(
         IUserCreateService userCreateService,
-        IUserListByIdService userListByIdService)
+        IUserListByIdService userListByIdService,
+        IUserListByNameService userListByNameService,
+        IUserListByEmailService userListByEmailService)
     {
         _userCreateService = userCreateService;
         _userListByIdService = userListByIdService;
+        _userListByNameService = userListByNameService;
+        _userListByEmailService = userListByEmailService;
     }
 
     [HttpPost]
