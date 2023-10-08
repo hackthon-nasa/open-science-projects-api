@@ -32,6 +32,7 @@ public class ProjectRepository : IProjectRepository
             .Select(x => new Project
             {
                 Id = x.Id,
+                Title = x.Title,
                 Description = x.Description,
                 Link = x.Link,
                 OrganizationId = x.OrganizationId,
@@ -47,6 +48,7 @@ public class ProjectRepository : IProjectRepository
             .Select(x => new Project
             {
                 Id = x.Id,
+                Title = x.Title,
                 Description = x.Description,
                 Link = x.Link,
                 OrganizationId = x.OrganizationId,
@@ -62,6 +64,7 @@ public class ProjectRepository : IProjectRepository
             .Select(x => new Project
             {
                 Id = x.Id,
+                Title = x.Title,
                 Description = x.Description,
                 Link = x.Link,
                 OrganizationId = x.OrganizationId,

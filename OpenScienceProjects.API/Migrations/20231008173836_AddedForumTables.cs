@@ -35,7 +35,7 @@ namespace OpenScienceProjects.API.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    description = table.Column<string>(type: "varchar(250", nullable: false),
+                    description = table.Column<string>(type: "varchar(250)", nullable: false),
                     discussion_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

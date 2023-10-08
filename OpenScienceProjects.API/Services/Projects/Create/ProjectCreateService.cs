@@ -22,6 +22,7 @@ public class ProjectCreateService : IProjectCreateService
     {
         var project = new Project
         {
+            Title = model.Title,
             Description = model.Description,
             Link = model.Link,
             OrganizationId = model.OrganizationId,

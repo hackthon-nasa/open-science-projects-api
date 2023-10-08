@@ -33,7 +33,7 @@ namespace OpenScienceProjects.API.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar(250")
+                        .HasColumnType("varchar(250)")
                         .HasColumnName("description");
 
                     b.Property<int>("DiscussionId")

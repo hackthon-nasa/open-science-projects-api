@@ -4,6 +4,9 @@ namespace OpenScienceProjects.API.Controllers.Models.Projects;
 
 public class ProjectCreateModel
 {
+    [JsonPropertyName("title")]
+    public string Title { get; set; }
+
     [JsonPropertyName("description")]
     public string Description { get; set; }
 
