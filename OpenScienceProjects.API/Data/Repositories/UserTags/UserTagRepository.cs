@@ -19,4 +19,12 @@ public class UserTagRepository : IUserTagRepository
         await _entity.AddRangeAsync(userTags);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<IList<UserTag>> GetTagsByUserId(int userId)
+    {
+        return await _entity
+            .Include(x => x.Tag)
+            .Where(x => x.UserId == userId)
+            .ToListAsync();
+    }
 }

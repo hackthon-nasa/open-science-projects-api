@@ -13,6 +13,7 @@ using OpenScienceProjects.API.Services.Users.Create;
 using OpenScienceProjects.API.Services.Users.ListByEmail;
 using OpenScienceProjects.API.Services.Users.ListById;
 using OpenScienceProjects.API.Services.Users.ListByName;
+using OpenScienceProjects.API.Services.Users.ListTagsById;
 
 namespace OpenScienceProjects.API;
 
@@ -29,7 +30,7 @@ public static class DependencyInjection
     {
         services.AddDbContext<DatabaseContext>(options =>
         {
-            var connectionString = "ConnectionString";
+            var connectionString = Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING");
             options.UseSqlServer(connectionString!);
         });
     }
@@ -54,5 +55,6 @@ public static class DependencyInjection
         services.AddTransient<IUserListByEmailService, UserListByEmailService>();
         services.AddTransient<IUserListByIdService, UserListByIdService>();
         services.AddTransient<IUserListByNameService, UserListByNameService>();
+        services.AddTransient<IUserListTagsByIdService, UserListTagsByIdService>();
     }
 }

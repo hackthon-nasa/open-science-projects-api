@@ -5,6 +5,7 @@ using OpenScienceProjects.API.Services.Users.Create;
 using OpenScienceProjects.API.Services.Users.ListByEmail;
 using OpenScienceProjects.API.Services.Users.ListById;
 using OpenScienceProjects.API.Services.Users.ListByName;
+using OpenScienceProjects.API.Services.Users.ListTagsById;
 
 namespace OpenScienceProjects.API.Controllers;
 
@@ -16,17 +17,20 @@ public class UsersController : ControllerBase
     private readonly IUserListByIdService _userListByIdService;
     private readonly IUserListByNameService _userListByNameService;
     private readonly IUserListByEmailService _userListByEmailService;
+    private readonly IUserListTagsByIdService _userListTagsByIdService;
 
     public UsersController(
         IUserCreateService userCreateService,
         IUserListByIdService userListByIdService,
         IUserListByNameService userListByNameService,
-        IUserListByEmailService userListByEmailService)
+        IUserListByEmailService userListByEmailService,
+        IUserListTagsByIdService userListTagsByIdService)
     {
         _userCreateService = userCreateService;
         _userListByIdService = userListByIdService;
         _userListByNameService = userListByNameService;
         _userListByEmailService = userListByEmailService;
+        _userListTagsByIdService = userListTagsByIdService;
     }
 
     [HttpPost]
@@ -51,5 +55,11 @@ public class UsersController : ControllerBase
     public Task<UserListByEmailResponse> GetUserListByEmail(string email)
     {
         return _userListByEmailService.GetUserListByEmail(email);
+    }
+
+    [HttpGet("{id}/tags")]
+    public Task<UserListTagsByIdResponse> GetUserListTagsByUserId(int id)
+    {
+        return _userListTagsByIdService.GetUserListTagsByUserId(id);
     }
 }
