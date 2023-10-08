@@ -10,6 +10,9 @@ public class OrganizationListByIdResponse
     [JsonPropertyName("description")]
     public string Description { get; set; }
 
+    [JsonPropertyName("location")]
+    public string Location { get; set; }
+
     [JsonPropertyName("official_site")]
     public string OfficialSite { get; set; }
 

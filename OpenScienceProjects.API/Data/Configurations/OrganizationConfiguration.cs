@@ -15,6 +15,7 @@ public class OrganizationConfiguration : IEntityTypeConfiguration<Organization>
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
         builder.Property(x => x.Name).HasColumnName("name").IsRequired();
         builder.Property(x => x.Description).HasColumnName("description").IsRequired();
+        builder.Property(x => x.Location).HasColumnName("location").HasColumnType("varchar(250)").IsRequired();
         builder.Property(x => x.OfficialSite).HasColumnName("official_site").HasColumnType("varchar(250)").IsRequired();
         builder.Property(x => x.Email).HasColumnName("email").HasColumnType("varchar(100)").IsRequired();
         builder.Property(x => x.Phone).HasColumnName("phone").HasColumnType("int").HasMaxLength(20).IsRequired();
