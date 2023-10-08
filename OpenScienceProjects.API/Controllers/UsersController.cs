@@ -45,13 +45,13 @@ public class UsersController : ControllerBase
         return _userListByIdService.GetUserListById(id);
     }
 
-    [HttpGet("{name}")]
+    [HttpGet("name/{name}")]
     public Task<UserListByNameResponse> GetUserListByName(string name)
     {
         return _userListByNameService.GetUserListByName(name);
     }
 
-    [HttpGet("{email}")]
+    [HttpGet("email/{email}")]
     public Task<UserListByEmailResponse> GetUserListByEmail(string email)
     {
         return _userListByEmailService.GetUserListByEmail(email);
