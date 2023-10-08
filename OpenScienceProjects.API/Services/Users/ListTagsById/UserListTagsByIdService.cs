@@ -21,8 +21,8 @@ public class UserListTagsByIdService : IUserListTagsByIdService
             Tags = tags
                 .Select(x => new UserListTagsByIdResponse.UserListTagsResponse
                 {
-                    Id = x.TagId,
-                    Description = x.Tag.Description,
+                    Id = x.Id,
+                    Description = x.Description,
                 })
                 .ToList(),
         };
