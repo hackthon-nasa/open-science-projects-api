@@ -1,11 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OpenScienceProjects.API.Data;
+using OpenScienceProjects.API.Data.Repositories.Comments;
+using OpenScienceProjects.API.Data.Repositories.Discussions;
 using OpenScienceProjects.API.Data.Repositories.Organizations;
 using OpenScienceProjects.API.Data.Repositories.Projects;
 using OpenScienceProjects.API.Data.Repositories.ProjectsTags;
 using OpenScienceProjects.API.Data.Repositories.ProjectsUsers;
 using OpenScienceProjects.API.Data.Repositories.Users;
 using OpenScienceProjects.API.Data.Repositories.UserTags;
+using OpenScienceProjects.API.Services.Comment;
+using OpenScienceProjects.API.Services.Discussion.List;
 using OpenScienceProjects.API.Services.Organizations.Create;
 using OpenScienceProjects.API.Services.Organizations.ListById;
 using OpenScienceProjects.API.Services.Organizations.ListTagsById;
@@ -47,6 +51,8 @@ public static class DependencyInjection
         services.AddTransient<IProjectUserRepository, ProjectUserRepository>();
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IUserTagRepository, UserTagRepository>();
+        services.AddTransient<IDiscussionRepository, DiscussionRepository>();
+        services.AddTransient<ICommentRepository, CommentRepository>();
     }
 
     private static void AddServices(this IServiceCollection services)
@@ -65,5 +71,9 @@ public static class DependencyInjection
         services.AddTransient<IUserListByIdService, UserListByIdService>();
         services.AddTransient<IUserListByNameService, UserListByNameService>();
         services.AddTransient<IUserListTagsByIdService, UserListTagsByIdService>();
+        
+        services.AddTransient<IDiscussionListByProjectIdService, DiscussionListByProjectIdService>();
+        
+        services.AddTransient<ICommentListByDiscussionIdService, CommentListByDiscussionIdService>();
     }
 }

@@ -14,7 +14,7 @@ public class CommentsController : ControllerBase
         _listByDiscussionIdService = listByDiscussionIdService;
     }
     
-    [HttpGet]
+    [HttpGet("{discussionId}")]
     public async Task<List<Entities.Comment>> GetCommentListByProjectId([FromRoute] int discussionId)
     {
         return await _listByDiscussionIdService.GetCommentListByProjectId(discussionId);
