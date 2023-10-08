@@ -19,6 +19,7 @@ public class OrganizationCreateService : IOrganizationCreateService
         {
             Name = model.Name,
             Description = model.Description,
+            OfficialSite = model.OfficialSite,
             Email = model.Email,
             Phone = model.Phone,
         };

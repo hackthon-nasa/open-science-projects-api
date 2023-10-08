@@ -20,6 +20,7 @@ public class OrganizationListByIdService : IOrganizationListByIdService
         {
             Name = organization.Name,
             Description = organization.Description,
+            OfficialSite = organization.OfficialSite,
             Email = organization.Email,
             Phone = organization.Phone,
         };
