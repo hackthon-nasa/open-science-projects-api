@@ -1,11 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OpenScienceProjects.API.Data;
+using OpenScienceProjects.API.Data.Repositories.Organizations;
 using OpenScienceProjects.API.Data.Repositories.Projects;
 using OpenScienceProjects.API.Data.Repositories.ProjectsTags;
 using OpenScienceProjects.API.Data.Repositories.ProjectsUsers;
 using OpenScienceProjects.API.Data.Repositories.Users;
 using OpenScienceProjects.API.Data.Repositories.UserTags;
-using OpenScienceProjects.API.Services.Organizations;
+using OpenScienceProjects.API.Services.Organizations.Create;
+using OpenScienceProjects.API.Services.Organizations.ListById;
+using OpenScienceProjects.API.Services.Organizations.ListTagsById;
 using OpenScienceProjects.API.Services.Projects.AddUser;
 using OpenScienceProjects.API.Services.Projects.Create;
 using OpenScienceProjects.API.Services.Projects.List;
@@ -38,6 +41,7 @@ public static class DependencyInjection
 
     private static void AddRepositories(this IServiceCollection services)
     {
+        services.AddTransient<IOrganizationRepository, OrganizationRepository>();
         services.AddTransient<IProjectRepository, ProjectRepository>();
         services.AddTransient<IProjectTagRepository, ProjectTagRepository>();
         services.AddTransient<IProjectUserRepository, ProjectUserRepository>();
@@ -47,6 +51,10 @@ public static class DependencyInjection
 
     private static void AddServices(this IServiceCollection services)
     {
+        services.AddTransient<IOrganizationCreateService, OrganizationCreateService>();
+        services.AddTransient<IOrganizationListByIdService, OrganizationListByIdService>();
+        services.AddTransient<IOrganizationListTagsByIdService, OrganizationListTagsByIdService>();
+
         services.AddTransient<IProjectAddUserService, ProjectAddUserService>();
         services.AddTransient<IProjectCreateService, ProjectCreateService>();
         services.AddTransient<IProjectListService, ProjectListService>();
@@ -57,7 +65,5 @@ public static class DependencyInjection
         services.AddTransient<IUserListByIdService, UserListByIdService>();
         services.AddTransient<IUserListByNameService, UserListByNameService>();
         services.AddTransient<IUserListTagsByIdService, UserListTagsByIdService>();
-
-        services.AddTransient<IOrganizationListTagsByIdService, OrganizationListTagsByIdService>();
     }
 }

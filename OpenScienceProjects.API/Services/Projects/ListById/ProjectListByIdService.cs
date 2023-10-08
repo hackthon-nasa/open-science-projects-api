@@ -1,6 +1,5 @@
 ﻿using OpenScienceProjects.API.Controllers.Reponses.Projects;
 using OpenScienceProjects.API.Data.Repositories.Projects;
-using OpenScienceProjects.API.Entities;
 
 namespace OpenScienceProjects.API.Services.Projects.ListById;
 
