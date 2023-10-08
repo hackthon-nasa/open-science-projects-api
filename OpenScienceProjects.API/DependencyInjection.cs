@@ -29,7 +29,7 @@ public static class DependencyInjection
     {
         services.AddDbContext<DatabaseContext>(options =>
         {
-            var connectionString = Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING");
+            var connectionString = "ConnectionString";
             options.UseSqlServer(connectionString!);
         });
     }

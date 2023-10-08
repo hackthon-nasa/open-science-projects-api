@@ -36,6 +36,18 @@ public class ProjectsController : ControllerBase
         return _projectListService.GetProjectList(userTagsListModel.TagIds);
     }
 
+    [HttpGet("organization/{organizationId}")]
+    public Task<ProjectListByIdResponse> GetProjectByOrganizationId(int organizationId)
+    {
+        return _projectListByIdService.GetProjectListByOrganizationId(organizationId);
+    }
+
+    [HttpGet("/name/{name}")]
+    public Task<List<ProjectListByIdResponse>> GetProjectByName(string name)
+    {
+        return _projectListByIdService.GetProjectListByName(name);
+    }
+
     [HttpGet("{id}")]
     public Task<ProjectListByIdResponse> GetProjectListById(int id)
     {

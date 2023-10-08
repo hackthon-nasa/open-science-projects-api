@@ -38,6 +38,34 @@ public class ProjectRepository : IProjectRepository
             }).FirstOrDefaultAsync();
     }
 
+    public Task<List<Project>> GetProjectListByName(string name)
+    {
+        return _entity
+            .Where(x => x.Description == name)
+            .Select(x => new Project
+            {
+                Id = x.Id,
+                Description = x.Description,
+                OrganizationId = x.OrganizationId,
+                Organization = x.Organization,
+                ProjectTags = x.ProjectTags
+            }).ToListAsync();
+    }
+
+    public Task<List<Project>> GetProjectListByOrganizationId(int organizationId)
+    {
+        return _entity
+            .Where(x => x.OrganizationId == organizationId)
+            .Select(x => new Project
+            {
+                Id = x.Id,
+                Description = x.Description,
+                OrganizationId = x.OrganizationId,
+                Organization = x.Organization,
+                ProjectTags = x.ProjectTags
+            }).ToListAsync();
+    }
+
     public async Task InsertOne(Project project)
     {
         await _entity.AddAsync(project);
