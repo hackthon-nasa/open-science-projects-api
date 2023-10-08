@@ -13,7 +13,7 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
-        builder.Property(x => x.Description).HasColumnName("description").HasColumnType("varchar(250").IsRequired();
+        builder.Property(x => x.Description).HasColumnName("description").HasColumnType("varchar(250)").IsRequired();
         builder.Property(x => x.DiscussionId).HasColumnName("discussion_id").IsRequired();
 
         builder

@@ -12,7 +12,7 @@ using OpenScienceProjects.API.Data;
 namespace OpenScienceProjects.API.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20231008171748_AddedForumTables")]
+    [Migration("20231008173836_AddedForumTables")]
     partial class AddedForumTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,7 @@ namespace OpenScienceProjects.API.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar(250")
+                        .HasColumnType("varchar(250)")
                         .HasColumnName("description");
 
                     b.Property<int>("DiscussionId")
