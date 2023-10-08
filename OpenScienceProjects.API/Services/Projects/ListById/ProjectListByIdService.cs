@@ -19,6 +19,7 @@ public class ProjectListByIdService : IProjectListByIdService
         return new ProjectListByIdResponse
         {
             Id = projects.Id,
+            Title = projects.Title,
             Description = projects.Description,
             Link = projects.Link,
             OrganizationId = projects.OrganizationId,
@@ -33,6 +34,7 @@ public class ProjectListByIdService : IProjectListByIdService
         return new ProjectListByIdResponse
         {
             Id = projects.Id,
+            Title = projects.Title,
             Description = projects.Description,
             Link = projects.Link,
             OrganizationId = projects.OrganizationId,
@@ -47,6 +49,7 @@ public class ProjectListByIdService : IProjectListByIdService
         return projects.Select(p => new ProjectListByIdResponse
         {
             Id = p.Id,
+            Title = p.Title,
             Description = p.Description,
             Link = p.Link,
             OrganizationId = p.OrganizationId,
