@@ -10,5 +10,5 @@ public interface IProjectRepository
     Task<List<Project>> GetProjectList(IList<int> userTagsListModel);
     Task InsertOne(Project project);
     Task<IList<ProjectTag>> GetTagsByOrganizationId(int organizationId);
-    Task<List<ProjectTag>> GetProjectTagByIdProjectId(int id);
+    Task<List<ProjectTag>> GetProjectTagsByIdProjectId(int id);
 }

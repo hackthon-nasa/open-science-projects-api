@@ -9,5 +9,5 @@ public interface IProjectListByIdService
     Task<List<ProjectListByIdResponse>> GetProjectListByOrganizationId(int organizationId);
 
     Task<List<ProjectListByIdResponse>> GetProjectListByName(string name);
-
+    Task<List<int>> GetProjectTagByIdProjectId(int id);
 }

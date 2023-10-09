@@ -104,7 +104,7 @@ public class ProjectRepository : IProjectRepository
             .ToListAsync();
     }
 
-    public async Task<List<ProjectTag>> GetProjectTagByIdProjectId(int id)
+    public async Task<List<ProjectTag>> GetProjectTagsByIdProjectId(int id)
     {
         return await _entity
             .Include(x => x.ProjectTags)

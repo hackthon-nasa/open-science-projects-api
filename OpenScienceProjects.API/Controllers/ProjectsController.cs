@@ -57,7 +57,7 @@ public class ProjectsController : ControllerBase
     [HttpGet("/tags/{id}")]
     public Task<List<int>> GetProjectTagsByProjectId(int id)
     {
-        return _projectListByIdService.GetProjectListById(id);
+        return _projectListByIdService.GetProjectTagByIdProjectId(id);
     }
 
     [HttpPost]
