@@ -14,11 +14,22 @@ public class ProjectListService : IProjectListService
     
     public async Task<ProjectListResponse> GetProjectList(IList<int> userTagsListModel)
     {
-        var projects  = await _projectRepository.GetProjectList(userTagsListModel);
-
-        return new ProjectListResponse
+        if (userTagsListModel == null || !userTagsListModel.Any())
         {
-            Projects = projects
-        };
+            var projects = await _projectRepository.GetProjectListIfTagsIsEmpty();
+            return new ProjectListResponse
+            {
+                Projects = projects
+            };
+        }
+        else
+        {
+            var projects  = _projectRepository.GetProjectList(userTagsListModel);
+
+            return new ProjectListResponse
+            {
+                Projects = projects.ToList()
+            };
+        }
     }
 }
