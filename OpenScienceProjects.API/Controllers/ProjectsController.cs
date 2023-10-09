@@ -53,6 +53,12 @@ public class ProjectsController : ControllerBase
     {
         return _projectListByIdService.GetProjectListById(id);
     }
+    
+    [HttpGet("/tags/{id}")]
+    public Task<List<int>> GetProjectTagsByProjectId(int id)
+    {
+        return _projectListByIdService.GetProjectListById(id);
+    }
 
     [HttpPost]
     public Task CreateProject(ProjectCreateModel projectCreateModel)

@@ -87,4 +87,13 @@ public class ProjectRepository : IProjectRepository
             .SelectMany(x => x.ProjectTags)
             .ToListAsync();
     }
+
+    public async Task<List<ProjectTag>> GetProjectTagByIdProjectId(int id)
+    {
+        return await _entity
+            .Include(x => x.ProjectTags)
+            .Where(x => x.Id == id)
+            .SelectMany(x => x.ProjectTags)
+            .ToListAsync();
+    }
 }
