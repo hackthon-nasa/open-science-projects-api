@@ -20,5 +20,5 @@ public class ProjectListByIdResponse
     public int OrganizationId { get; set; }
 
     [JsonPropertyName("tag_ids")]
-    public List<int> TagIds { get; set; } = new List<int>();
+    public List<string> TagDescriptions { get; set; }
 }
