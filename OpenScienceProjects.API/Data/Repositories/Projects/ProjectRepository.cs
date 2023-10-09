@@ -96,17 +96,10 @@ public class ProjectRepository : IProjectRepository
     public Task<Project> GetProjectListById(int id)
     {
         return _entity
+            .Include(x => x.ProjectTags)
+            .ThenInclude(x => x.Tag)
             .Where(x => x.Id == id)
-            .Select(x => new Project
-            {
-                Id = x.Id,
-                Title = x.Title,
-                Description = x.Description,
-                Link = x.Link,
-                OrganizationId = x.OrganizationId,
-                Organization = x.Organization,
-                ProjectTags = x.ProjectTags
-            }).FirstOrDefaultAsync();
+            .FirstOrDefaultAsync();
     }
 
     public Task<List<Project>> GetProjectListByName(string name)
