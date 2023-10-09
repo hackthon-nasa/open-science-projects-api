@@ -17,7 +17,7 @@
       "applicationUrl": "http://localhost:6001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DATABASE_CONNECTION_STRING": "Server=open-science-projects.database.windows.net;Database=open-science-projects;User Id=open-science-projects;Password=eB-Xi1&wkl/538g~6zZ>;"
+        "DATABASE_CONNECTION_STRING": ""
       }
     },
     "IIS Express": {
