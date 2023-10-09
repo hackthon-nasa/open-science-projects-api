@@ -14,10 +14,11 @@ public class OrganizationRepository : IOrganizationRepository
         _entity = _context.Set<Organization>();
     }
 
-    public async Task InsertOne(Organization organization)
+    public async Task<int> InsertOne(Organization organization)
     {
         await _entity.AddAsync(organization);
         await _context.SaveChangesAsync();
+        return organization.Id;
     }
 
     public Task<Organization> GetOrganizationListById(int id)

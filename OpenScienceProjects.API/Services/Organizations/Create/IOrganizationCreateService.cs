@@ -4,5 +4,5 @@ namespace OpenScienceProjects.API.Services.Organizations.Create;
 
 public interface IOrganizationCreateService
 {
-    Task CreateOrganization(OrganizationCreateModel model);
+    Task<int> CreateOrganization(OrganizationCreateModel model);
 }

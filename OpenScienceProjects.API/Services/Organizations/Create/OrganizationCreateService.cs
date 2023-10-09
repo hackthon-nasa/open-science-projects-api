@@ -13,7 +13,7 @@ public class OrganizationCreateService : IOrganizationCreateService
         _organizationRepository = organizationRepository;
     }
 
-    public Task CreateOrganization(OrganizationCreateModel model)
+    public Task<int> CreateOrganization(OrganizationCreateModel model)
     {
         var organization = new Organization
         {

@@ -26,7 +26,7 @@ public class OrganizationsController : ControllerBase
     }
 
     [HttpPost]
-    public Task CreateUser(OrganizationCreateModel organizationCreateModel)
+    public Task<int> CreateUser(OrganizationCreateModel organizationCreateModel)
     {
         return _organizationCreateService.CreateOrganization(organizationCreateModel);
     }
