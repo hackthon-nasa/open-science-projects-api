@@ -24,7 +24,7 @@ public class ProjectListByIdService : IProjectListByIdService
             Description = projects.Description,
             Link = projects.Link,
             OrganizationId = projects.OrganizationId,
-            TagIds = new List<int>(),
+            TagDescriptions = projects.ProjectTags.Select(x => x.Tag.Description).ToList()
         };
     }
 
@@ -39,8 +39,7 @@ public class ProjectListByIdService : IProjectListByIdService
                 Title = p.Title,
                 Description = p.Description,
                 Link = p.Link,
-                OrganizationId = p.OrganizationId,
-                TagIds = new List<int>(),
+                OrganizationId = p.OrganizationId
             }).ToList();
     }
 
@@ -54,8 +53,7 @@ public class ProjectListByIdService : IProjectListByIdService
             Title = p.Title,
             Description = p.Description,
             Link = p.Link,
-            OrganizationId = p.OrganizationId,
-            TagIds = new List<int>(),
+            OrganizationId = p.OrganizationId
         }).ToList();
     }
 
