@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OpenScienceProjects.API.Controllers.Reponses.Projects;
 using OpenScienceProjects.API.Entities;
 using OpenScienceProjects.API.Extensions;
 
@@ -15,17 +16,22 @@ public class ProjectRepository : IProjectRepository
         _entity = _context.Set<Project>();
     }
 
-    public Task<List<Project>> GetProjectList(IList<int> userTagsListModel)
+    public IEnumerable<ProjectList> GetProjectList(IList<int> userTagsListModel)
     {
-        if (userTagsListModel == null || !userTagsListModel.Any())
-            return _entity.ToListAsync();
-
         var projectsWithTags = (
             from project in _entity
-            join projectTag in _context.ProjectTags
-                on project.Id equals projectTag.ProjectId
+            join projectTag in _context.ProjectTags on project.Id equals projectTag.ProjectId
+            join tag in _context.Tags on projectTag.TagId equals tag.Id
             where userTagsListModel.Contains(projectTag.TagId)
-            select project
+            select new
+            {
+                ProjectId = project.Id,
+                ProjectTittle = project.Title,
+                ProjectDescription = project.Description,
+                ProjectLink = project.Link,
+                ProjectOrganizationId = project.OrganizationId,
+                ProjectTagDescription = tag.Description
+            }
         );
 
         var projectsWithoutTags = (
@@ -34,11 +40,57 @@ public class ProjectRepository : IProjectRepository
                 on project.Id equals projectTag.ProjectId
                 into projectTagJoined
             from projectTag in projectTagJoined.DefaultIfEmpty()
+            join tag in _context.Tags on projectTag.TagId equals tag.Id
             where !userTagsListModel.Contains(projectTag.TagId)
-            select project
+            select new
+            {
+                ProjectId = project.Id,
+                ProjectTittle = project.Title,
+                ProjectDescription = project.Description,
+                ProjectLink = project.Link,
+                ProjectOrganizationId = project.OrganizationId,
+                ProjectTagDescription = tag.Description
+            }
         );
 
-        return projectsWithTags.Concat(projectsWithoutTags).ToListAsync();
+        var projectsGrouping = projectsWithTags.Concat(projectsWithoutTags);
+
+        var projects = new Dictionary<int, ProjectList>();
+        foreach (var projectGrouped in projectsGrouping)
+        {
+            if (!projects.ContainsKey(projectGrouped.ProjectId))
+            {
+                projects[projectGrouped.ProjectId] = new ProjectList
+                {
+                    Id = projectGrouped.ProjectId,
+                    Description = projectGrouped.ProjectDescription,
+                    Title = projectGrouped.ProjectTittle,
+                    Link = projectGrouped.ProjectLink,
+                    OrganizationId = projectGrouped.ProjectOrganizationId,
+                    TagDescriptions = new List<string>()
+                };
+            }
+
+            projects[projectGrouped.ProjectId].TagDescriptions.Add(projectGrouped.ProjectTagDescription);
+        }
+
+        return projects.Values;
+    }
+
+    public Task<List<ProjectList>> GetProjectListIfTagsIsEmpty()
+    {
+        return _entity
+            .Include(x => x.ProjectTags)
+            .ThenInclude(x => x.Tag)
+            .Select(x => new ProjectList
+            {
+                Id = x.Id,
+                Description = x.Description,
+                Title = x.Title,
+                Link = x.Link,
+                OrganizationId = x.OrganizationId,
+                TagDescriptions = x.ProjectTags.Select(y => y.Tag.Description).ToList()
+            }).ToListAsync();
     }
 
     public Task<Project> GetProjectListById(int id)
