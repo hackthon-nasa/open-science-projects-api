@@ -17,15 +17,28 @@ public class ProjectRepository : IProjectRepository
 
     public Task<List<Project>> GetProjectList(IList<int> userTagsListModel)
     {
-        var query =
-            from project in _entity
-            join projectTag in _context.ProjectTags.FilterTags(userTagsListModel)
-                on project.Id equals projectTag.ProjectId
-                into projectTagJoined 
-            from projectTag in projectTagJoined.DefaultIfEmpty()
-            select project;
+        if (userTagsListModel == null || !userTagsListModel.Any())
+            return _entity.ToListAsync();
 
-        return query.ToListAsync();
+        var projectsWithTags = (
+            from project in _entity
+            join projectTag in _context.ProjectTags
+                on project.Id equals projectTag.ProjectId
+            where userTagsListModel.Contains(projectTag.TagId)
+            select project
+        );
+
+        var projectsWithoutTags = (
+            from project in _entity
+            join projectTag in _context.ProjectTags
+                on project.Id equals projectTag.ProjectId
+                into projectTagJoined
+            from projectTag in projectTagJoined.DefaultIfEmpty()
+            where !userTagsListModel.Contains(projectTag.TagId)
+            select project
+        );
+
+        return projectsWithTags.Concat(projectsWithoutTags).ToListAsync();
     }
 
     public Task<Project> GetProjectListById(int id)
