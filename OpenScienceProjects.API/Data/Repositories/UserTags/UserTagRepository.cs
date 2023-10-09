@@ -20,11 +20,13 @@ public class UserTagRepository : IUserTagRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<IList<UserTag>> GetTagsByUserId(int userId)
+    public async Task<IList<Tag>> GetTagsByUserId(int userId)
     {
-        return await _entity
-            .Include(x => x.Tag)
-            .Where(x => x.UserId == userId)
-            .ToListAsync();
+        return await (
+            from userTag in _entity
+            join tag in _context.Tags on userTag.TagId equals tag.Id
+            where userTag.UserId == userId
+            select tag
+        ).ToListAsync();
     }
 }

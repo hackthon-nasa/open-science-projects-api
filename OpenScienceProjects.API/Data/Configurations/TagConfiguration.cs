@@ -13,6 +13,6 @@ public class TagConfiguration : IEntityTypeConfiguration<Tag>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
-        builder.Property(x => x.Description).HasColumnName("description").HasColumnType("varchar(100)").IsRequired();
+        builder.Property(x => x.Description).HasColumnName("description").IsRequired();
     }
 }

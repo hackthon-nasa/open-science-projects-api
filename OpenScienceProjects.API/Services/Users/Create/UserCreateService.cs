@@ -10,8 +10,12 @@ public class UserCreateService : IUserCreateService
     private readonly IUserRepository _userRepository;
     private readonly IUserTagRepository _userTagRepository;
 
-    public UserCreateService()
+    public UserCreateService(
+        IUserRepository userRepository,
+        IUserTagRepository userTagRepository)
     {
+        _userRepository = userRepository;
+        _userTagRepository = userTagRepository;
     }
 
     public async Task CreateUser(UserCreateModel model)
