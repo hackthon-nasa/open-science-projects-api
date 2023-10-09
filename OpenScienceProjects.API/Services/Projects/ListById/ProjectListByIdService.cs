@@ -1,5 +1,6 @@
 ﻿using OpenScienceProjects.API.Controllers.Reponses.Projects;
 using OpenScienceProjects.API.Data.Repositories.Projects;
+using OpenScienceProjects.API.Entities;
 
 namespace OpenScienceProjects.API.Services.Projects.ListById;
 
@@ -56,5 +57,11 @@ public class ProjectListByIdService : IProjectListByIdService
             OrganizationId = p.OrganizationId,
             TagIds = new List<int>(),
         }).ToList();
+    }
+
+    public async Task<List<int>> GetProjectTagByIdProjectId(int id)
+    {
+        var projectTags = await _projectRepository.GetProjectTagsByIdProjectId(id);
+        return projectTags.Select(x => x.TagId).ToList();
     }
 }
